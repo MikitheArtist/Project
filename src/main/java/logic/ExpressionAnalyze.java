@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressionAnalyze {
-
+    static int counterOfNumber = 0;
     public static List<Lexeme> lexAnalyze(String expText) {
         ArrayList<Lexeme> lexemes = new ArrayList<>();
+
         int pos = 0;
         while (pos< expText.length()) {
             char c = expText.charAt(pos);
@@ -48,6 +49,7 @@ public class ExpressionAnalyze {
                             c = expText.charAt(pos);
                         } while ((c <= '9' && c >= '0') || c =='.');
                         lexemes.add(new Lexeme(LexemeType.NUMBER, sb.toString()));
+                        counterOfNumber++;
                     } else {
                         if (c != ' ') {
                             throw new RuntimeException("Unexpected character: " + c);
